@@ -1,4 +1,4 @@
-TARGET = task-tracker
+TARGET = task-cli
 
 build:
 	go build -o $(TARGET)
