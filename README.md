@@ -12,6 +12,7 @@ go v1.23.0
 To begin you need to download this:
 ```sh
 git clone https://github.com/HoneyVakkaria/cli-task-tracker.git
+cd ./cli-task-tracker
 ```
 
 Next, you can use makefile to install:
