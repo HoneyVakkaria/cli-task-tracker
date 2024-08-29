@@ -9,17 +9,19 @@ The idea for this project was taken from [roadmap site](https://roadmap.sh/proje
 go v1.23.0
 
 ### Installation
+To begin you need to download this:
+```sh
+git clone https://github.com/HoneyVakkaria/cli-task-tracker.git
+```
 
-There are a few ways to install the application:
-
-The first one is simple. Just use the Makefile:
+Next, you can use makefile to install:
 ```sh
 sudo make install # to install
 
 sudo make uninstall # to remove
 ```
 
-Or u can do it manually:
+Or do it manually:
 ```sh
 # To install
 go build -o task-tracker
@@ -29,10 +31,9 @@ rm -f task-tracker
 # To remove
 sudo rm -f /usr/local/bin/task-tracker
 ```
-
-<div style="border: 1px solid #f0ad4e; background-color: #fcf8e3; color: #8a6d3b; padding: 10px; border-radius: 5px;">
-  <strong>Note:</strong> The installation is only for Linux and macOS users.
-</div>
+> **Note:**
+>
+> The installation is only for Linux and macOS users.
 
 
 ### How to use
