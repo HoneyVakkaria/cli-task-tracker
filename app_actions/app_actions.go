@@ -91,7 +91,8 @@ func List(arg ListArguments) {
 		case task_actions.Progress:
 			status = "In Progress"
 		}
-		fmt.Printf("Task \"%s\" (ID: %d) Status: %s\n", v.Description, v.Id, status)
+		fmt.Printf("Task \"%s\" (ID: %d) Status: %s\n Created at: %s\n Last update was on: %s\n\n",
+			v.Description, v.Id, status, v.CreatedAt, v.UpdatedAt)
 	}
 }
 

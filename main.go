@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github/honeyvakkaria/cli-task-tracker/app_actions"
-	"log"
+	"github/honeyvakkaria/cli-task-tracker/errorhandle"
 	"os"
 	"strconv"
 )
@@ -17,22 +17,22 @@ func main() {
 
 	switch os.Args[1] {
 	case "add":
-		handleLenArgsError(3)
+		errorhandle.HandleLenArgsError(3)
 		app_actions.AddTask(os.Args[2])
 	case "update":
-		handleLenArgsError(4)
+		errorhandle.HandleLenArgsError(4)
 		app_actions.UpdateTask(convertId(os.Args[2]), os.Args[3])
 	case "delete":
-		handleLenArgsError(3)
+		errorhandle.HandleLenArgsError(3)
 		app_actions.DeleteTask(convertId(os.Args[2]))
 	case "list":
 		status := calculateStatus()
 		app_actions.List(status)
 	case "mark-in-progress":
-		handleLenArgsError(3)
+		errorhandle.HandleLenArgsError(3)
 		app_actions.Mark("in-progress", convertId(os.Args[2]))
 	case "mark-done":
-		handleLenArgsError(3)
+		errorhandle.HandleLenArgsError(3)
 		app_actions.Mark("done", convertId(os.Args[2]))
 	default:
 		fmt.Println("not supported action")
@@ -53,26 +53,17 @@ func calculateStatus() app_actions.ListArguments {
 	case "in-progress":
 		return app_actions.Progress
 	default:
-		err := errors.New("status is incorrect")
-		log.Fatal(err)
+		errorhandle.HandleError(errors.New("status is incorrect"))
 	}
 
 	return app_actions.All
-}
-
-// Function is helper to handle situations when count of arguments is too small
-func handleLenArgsError(n int) {
-	if len(os.Args) < n {
-		err := errors.New("not enough arguments")
-		log.Fatal(err)
-	}
 }
 
 // Function is helper to conver id from string to int
 func convertId(s string) int {
 	n, err := strconv.Atoi(s)
 	if err != nil {
-		log.Fatalf("Can't convert id in main function:\n%v", err)
+		errorhandle.HandleError(err)
 	}
 	return n
 }
